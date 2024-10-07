@@ -4,5 +4,9 @@ jobs:
   testing:
     runs-on: ubuntu-latest
     steps:
-     - name: first github
-       run: echo "first github action"
+     - name: checkout github code
+       uses: actions/checkout@v4
+     - name: maven 
+       run: mvn test
+     - name: checkstyle
+       run: mvn chekcstyle:checkstyle
