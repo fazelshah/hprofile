@@ -15,7 +15,7 @@ jobs:
        with:
           distribution: 'temurin'
           java-version: '11'
-     - name: setup sonar
+     - name: setup-sonar
        uses: warchant/setup-sonar-scanner@v7
      - name: run sonar
        run: sonar-scanner
