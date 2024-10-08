@@ -1,12 +1,5 @@
 name: Hprofile Actions
 on: [push, workflow_dispatch]
-env:
-  AWS_REGION: us-east-2
-  ECR_REPOSITORY: actapp           
-  ECS_SERVICE: vproapp-act-svc                
-  ECS_CLUSTER: vproapp-act               
-  ECS_TASK_DEFINITION: aws-files/taskdeffile.json 
-  CONTAINER_NAME: vproapp 
 
 jobs:
   Testing:
