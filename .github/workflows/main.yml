@@ -58,8 +58,20 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
-             push: true
-             tags: docker.io/fazelshah/clockbox:${{ github.run_number }}
+         push: true
+         tags: docker.io/fazelshah/clockbox:${{ github.run_number }}
+      - name: Deploy to Server
+        uses: appleboy/ssh-action@v0.1.5
+        with:
+               host: ${{ secrets.SSH_HOST }}
+               username: ${{ secrets.SSH_USER }}
+               key: ${{ secrets.SSH_KEY }}
+               script: |
+                 docker login -u fazelshah -p ${{ secrets.DOCKERHUB_TOKEN }}
+                 docker pull docker.io/fazelshah/clockbox:${{ github.run_number }}
+                 docker stop clockbox || true  # Stop the existing container if it exists
+                 docker rm clockbox || true  # Remove the existing container if it exists
+                 docker run -d --name demo-app -p 80:80 docker.io/fazelshahclockbox/:${{ github.run_number }}
 
              
            
