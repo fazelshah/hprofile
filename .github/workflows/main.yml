@@ -54,6 +54,7 @@ jobs:
              file: ./Dockerfile                  # Path to your Dockerfile
              push: true                          # Set to true to push the built image to the registry
              tags: docker.io/${{ secrets.DOCKERHUB_USERNAME }}/demo-app:v1
+        
              user_name: ${{ secrets.DOCKERHUB_USERNAME }}
              password: ${{ secrets.DOCKERHUB_TOKEN }}
              
