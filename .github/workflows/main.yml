@@ -48,7 +48,7 @@ jobs:
            SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }} #OPTIONAL
       - name: Build Docker Image
         id: buildAndPushImage
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v6
         with:
              context: .                          # The context of the Docker build, usually the root directory
              file: ./Dockerfile                  # Path to your Dockerfile
