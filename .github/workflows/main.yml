@@ -48,7 +48,7 @@ jobs:
            SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }} #OPTIONAL
       - name: Build Docker Image
         id: buildAndPushImage
-        uses: abhishek-070/docker-image-build-push-action@v1.0
+        uses: fazelshah/ansible:v1/docker-image-build-push-action@v1.0
         with:
              registry_url: 'docker.com'
              #repository_name: 'demo-app'
