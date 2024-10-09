@@ -46,15 +46,20 @@ jobs:
         env:
            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
            SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }} #OPTIONAL
-      - name: Build Docker Image
-        id: buildAndPushImage
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+             username: ${{ vars.DOCKERHUB_USERNAME }}
+             password: ${{ secrets.DOCKERHUB_TOKEN }}
+         
+      -  name: Set up Docker Buildx
+         uses: docker/setup-buildx-action@v3
+                    
+      - name: Build and push
         uses: docker/build-push-action@v6
         with:
-             context: .                          # The context of the Docker build, usually the root directory
-             file: ./Dockerfile                  # Path to your Dockerfile
-             push: true                          # Set to true to push the built image to the registry
-             tags: docker.io/fazelshah/demo-app:v1
-        
+             push: true
+             tags: ${{ vars.DOCKERHUB_USERNAME }}/clockbox:latest
              
            
              
