@@ -59,7 +59,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
              push: true
-             tags: ${{ secrets.DOCKERHUB_USERNAME }}/clockbox:latest
+             tags: docker.io/${{ secrets.DOCKERHUB_USERNAME }}/clockbox:latest
              
            
              
