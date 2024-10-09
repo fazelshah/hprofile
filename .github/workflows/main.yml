@@ -50,11 +50,12 @@ jobs:
         id: buildAndPushImage
         uses: docker/build-push-action@v3
         with:
-             registry_url: 'docker.com'
-             #repository_name: 'demo-app'
+             context: .                          # The context of the Docker build, usually the root directory
+             file: ./Dockerfile                  # Path to your Dockerfile
+             push: true                          # Set to true to push the built image to the registry
+             tags: docker.com/github:v1.0
              user_name: ${{ secrets.DOCKERHUB_USERNAME }}
              password: ${{ secrets.DOCKERHUB_TOKEN }}
-             image_version: 'v1.0'
-             docker_file: '.'
+             
 
 
